@@ -49,7 +49,7 @@ app.get("/", async (req, res) => {
         res.send(`
             <div style="font-family: sans-serif; text-align: center; margin-top: 50px;">
                 <h1 style="color: #0078d4;">Compteur de visites Azure</h1>
-                <h2 style="color: #2496ed;">(Running in a Docker Container)</h2>
+                <h2 style="color: #2496ed;">Running in a Docker Container</h2>
                 <p style="font-size: 24px;"><strong>Nombre de visites :</strong> ${count}</p>
                 <hr style="width: 50%;">
                 <p><strong>Hostname :</strong> ${req.hostname}</p>
