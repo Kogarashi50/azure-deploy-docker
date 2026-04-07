@@ -48,11 +48,13 @@ app.get("/", async (req, res) => {
         
         res.send(`
             <div style="font-family: sans-serif; text-align: center; margin-top: 50px;">
-                <h1>Compteur de visites Azure</h1>
+                <h1 style="color: #0078d4;">Compteur de visites Azure</h1>
+                <h2 style="color: #2496ed;">(Running in a Docker Container)</h2>
                 <p style="font-size: 24px;"><strong>Nombre de visites :</strong> ${count}</p>
                 <hr style="width: 50%;">
                 <p><strong>Hostname :</strong> ${req.hostname}</p>
                 <p><strong>Serveur Port :</strong> ${PORT}</p>
+                <img src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png" width="100" style="margin-top: 20px;">
             </div>
         `);
     } finally {
