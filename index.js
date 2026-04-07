@@ -50,8 +50,8 @@ app.get("/", async (req, res) => {
                 <h1>Compteur de visites Azure</h1>
                 <p style="font-size: 24px;"><strong>Nombre de visites :</strong> \${count}</p>
                 <hr style="width: 50%;">
-                <p><strong>Hostname :</strong> \${req.hostname}</p>
-                <p><strong>Serveur Port :</strong> \${PORT}</p>
+                <p><strong>Hostname :</strong> ${req.hostname}</p>
+                <p><strong>Serveur Port :</strong> ${PORT}</p>
             </div>
         `);
     } finally {
