@@ -61,5 +61,5 @@ app.get("/", async (req, res) => {
 
 app.listen(PORT, () => {
     // Note the backticks below!
-    console.log(\`Server started on port \${PORT}\`);
+    console.log(\`Server started on port ${PORT}`);
 });
