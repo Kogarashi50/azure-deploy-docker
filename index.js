@@ -5,8 +5,14 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 8080; 
 
-// Fixed path to stay within the app directory
-const FILE = path.join(__dirname, "visits.json");
+// On Azure, we must use the /home directory for files we want to save
+const storageDir = process.env.HOME ? path.join(process.env.HOME, 'site', 'data') : __dirname;
+
+if (!fs.existsSync(storageDir)){
+    fs.mkdirSync(storageDir, { recursive: true });
+}
+
+const FILE = path.join(storageDir, "visits.json");
 
 let lock = false;
 
@@ -42,10 +48,10 @@ app.get("/", async (req, res) => {
         res.send(`
             <div style="font-family: sans-serif; text-align: center; margin-top: 50px;">
                 <h1>Compteur de visites Azure</h1>
-                <p style="font-size: 24px;"><strong>Nombre de visites :</strong> ${count}</p>
+                <p style="font-size: 24px;"><strong>Nombre de visites :</strong> \${count}</p>
                 <hr style="width: 50%;">
-                <p><strong>Hostname :</strong> ${req.hostname}</p>
-                <p><strong>Serveur Port :</strong> ${PORT}</p>
+                <p><strong>Hostname :</strong> \${req.hostname}</p>
+                <p><strong>Serveur Port :</strong> \${PORT}</p>
             </div>
         `);
     } finally {
@@ -54,6 +60,6 @@ app.get("/", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    // Fixed backticks here
-    console.log(`Server started on port ${PORT}`);
+    // Note the backticks below!
+    console.log(\`Server started on port \${PORT}\`);
 });
